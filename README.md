@@ -33,15 +33,16 @@ Once the pipeline is established, the processed data can be used for analytical 
 ## The Data Set
 The dataset chosen is a simulated credit card fraud dataset from Kaggle. It contains both legitimate and fraudulent transactions, and includes a wide range of attributes such as transaction time, merchant details, customer information, and fraud flags. I selected this dataset because it offers a comprehensive view of typical transactional data and has a clear target variable (`is_fraud`) for classification tasks.
 
-**Key attributes:**
-- **index**: Unique Identifier for each row
-- **trans_date_trans_time**: Transaction DateTime
-- **cc_num**: Credit Card Number of Customer
-- **merchant**: Merchant Name
-- **category**: Merchant Category
-- **amt**: Transaction Amount
-- **first, last**: Name of Credit Card Holder
-- **is_fraud**: Fraud Flag (Target Variable)
+| **Attribute**              | **Description**                        |
+|----------------------------|----------------------------------------|
+| `index`                    | Unique Identifier for each row         |
+| `trans_date_trans_time`     | Transaction DateTime                   |
+| `cc_num`                   | Credit Card Number of Customer         |
+| `merchant`                 | Merchant Name                          |
+| `category`                 | Merchant Category                      |
+| `amt`                      | Transaction Amount                     |
+| `first, last`              | Name of Credit Card Holder             |
+| `is_fraud`                 | Fraud Flag (Target Variable)           |
 
 This dataset provides an ideal setting for experimenting with data streaming, real-time fraud detection, and data processing.
 
@@ -90,7 +91,7 @@ A demo video or presentation link will be provided to showcase the project.
 This project demonstrates the end-to-end process of document streaming and real-time data processing, from data extraction to storage and visualization. Key learnings include the effective use of Kafka for streaming, Spark for processing, and MongoDB for storing JSON data. The biggest challenge was handling unstandardized datetime formats and ensuring the correctness of real-time data flow.
 
 ## Follow Me On
-[LinkedIn Profile](#)
+[LinkedIn](https://www.linkedin.com/in/faizpuad/)
 
 ## Appendix
-[Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+[Kaggle Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection?select=fraudTrain.csv)
