@@ -351,6 +351,6 @@ MigrationBackup/
 client/data.csv
 client/output.txt
 
-# Ignore data source and output
+# Ignore data source and output, and env(store creds, port etc)
 data/*
 output/*
