@@ -1,0 +1,24 @@
+{"InvoiceNo":"538519","StockCode":"21931","Description":"JUMBO STORAGE BAG SUKI","Quantity":1,"InvoiceDate":"12\/12\/10 16:20","UnitPrice":1.95,"CustomerID":18037.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538519","StockCode":"22386","Description":"JUMBO BAG PINK POLKADOT","Quantity":1,"InvoiceDate":"12\/12\/10 16:20","UnitPrice":1.95,"CustomerID":18037.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538520","StockCode":"22802","Description":"FAUX FUR CHOCOLATE THROW","Quantity":1,"InvoiceDate":"12\/12\/10 16:21","UnitPrice":19.95,"CustomerID":null,"Country":"United Kingdom"}
+{"InvoiceNo":"538520","StockCode":"21826","Description":"EIGHT PIECE DINOSAUR SET","Quantity":2,"InvoiceDate":"12\/12\/10 16:21","UnitPrice":1.25,"CustomerID":null,"Country":"United Kingdom"}
+{"InvoiceNo":"538520","StockCode":"21679","Description":"SKULLS  STICKERS","Quantity":1,"InvoiceDate":"12\/12\/10 16:21","UnitPrice":0.85,"CustomerID":null,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21754","Description":"HOME BUILDING BLOCK WORD","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":5.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21755","Description":"LOVE BUILDING BLOCK WORD","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":5.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"22072","Description":"RED RETROSPOT TEA CUP AND SAUCER ","Quantity":8,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":3.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"22846","Description":"BREAD BIN DINER STYLE RED ","Quantity":1,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":16.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"22849","Description":"BREAD BIN DINER STYLE MINT","Quantity":1,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":16.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21527","Description":"RED RETROSPOT TRADITIONAL TEAPOT ","Quantity":6,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":7.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21258","Description":"VICTORIAN SEWING BOX LARGE","Quantity":2,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":12.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"22795","Description":"SWEETHEART RECIPE BOOK STAND","Quantity":2,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":6.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21218","Description":"RED SPOTTY BISCUIT TIN","Quantity":6,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":3.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21539","Description":"RED RETROSPOT BUTTER DISH","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":4.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21216","Description":"SET 3 RETROSPOT TEA,COFFEE,SUGAR","Quantity":4,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":4.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21784","Description":"SHOE SHINE BOX ","Quantity":2,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":9.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"82011A","Description":"BATHROOM SCALES, TROPICAL BEACH","Quantity":2,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":3.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"15060B","Description":"FAIRY CAKE DESIGN UMBRELLA","Quantity":4,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":3.75,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"85014A","Description":"BLACK\/BLUE POLKADOT UMBRELLA","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":5.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"85014B","Description":"RED RETROSPOT UMBRELLA","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":5.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538521","StockCode":"21756","Description":"BATH BUILDING BLOCK WORD","Quantity":3,"InvoiceDate":"12\/13\/10 9:02","UnitPrice":5.95,"CustomerID":14180.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538522","StockCode":"20801","Description":"LARGE PINK GLASS SUNDAE DISH","Quantity":32,"InvoiceDate":"12\/13\/10 9:09","UnitPrice":0.75,"CustomerID":16210.0,"Country":"United Kingdom"}
+{"InvoiceNo":"538522","StockCode":"21876","Description":"POTTERING MUG","Quantity":288,"InvoiceDate":"12\/13\/10 9:09","UnitPrice":0.42,"CustomerID":16210.0,"Country":"United Kingdom"}
