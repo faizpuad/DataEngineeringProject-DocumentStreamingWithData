@@ -1,14 +1,14 @@
 # Credit Card Fraud Transaction as Document Streaming Practice
 
-## Introduction & Goals
-This project is focused on practicing document streaming using a simulated dataset of credit card transactions obtained from Kaggle. The dataset covers legitimate and fraudulent transactions from 1st January 2019 to 31st December 2020, including 1000 customers and transactions across 800 merchants. The goal is to stream, process, and analyze this data to practice core data engineering tasks using modern tools and technologies such as Python, Kafka, Spark, and MongoDB.
+## Introduction
+This project focused on streaming process of data called `document streaming` using a simulated dataset of credit card transactions obtained from Kaggle. The dataset covers legitimate and fraudulent transactions from 1st January 2019 to 31st December 2020, including 1000 customers and transactions across 800 merchants. 
 
 The main objectives of the project are:
 - To simulate the data engineering pipeline, covering stages from data extraction to storage and visualization.
 - To implement real-time data streaming and batch processing, using tools such as Kafka for message buffering and Spark for data processing.
-- To apply data storage techniques using MongoDB, focusing on handling unstandardized datetime formats and ensuring data validation through Pydantic.
+- To discover possible drawback of this project's architecture that can be used as gap for my next data engineering project enhancement.
 
-Once the pipeline is established, the processed data can be used for analytical purposes, such as identifying fraudulent transactions, and the results will be visualized using BI tools like Streamlit or PowerBI.
+In real world scenario, this project once established, helps data analyst, data scientists and other downstream users to utilized the processed data for analytical purposes, such as identifying fraudulent transactions thru machine learning or even make custom dashboards and reports.
 
 ## Contents
 
@@ -23,15 +23,16 @@ Once the pipeline is established, the processed data can be used for analytical 
   - [Stream Processing](#stream-processing)
     - [Storing Data Stream](#storing-data-stream)
     - [Processing Data Stream](#processing-data-stream)
-  - [Batch Processing](#batch-processing)
-  - [Visualizations](#visualizations)
 - [Demo](#demo)
 - [Conclusion](#conclusion)
+- [Recommendation](#recommendation)
 - [Follow Me On](#follow-me-on)
 - [Appendix](#appendix)
 
 ## The Data Set
-The dataset chosen is a simulated credit card fraud dataset from Kaggle. It contains both legitimate and fraudulent transactions, and includes a wide range of attributes such as transaction time, merchant details, customer information, and fraud flags. I selected this dataset because it offers a comprehensive view of typical transactional data and has a clear target variable (`is_fraud`) for classification tasks.
+The dataset chosen is a simulated credit card fraud dataset from Kaggle. It contains both legitimate and fraudulent transactions, and includes a wide range of attributes such as transaction time, merchant details, customer information, and fraud flags. I selected this dataset because of my familiarity with bank data as a data analyst and thus such convenience shoudl expedite my learning process for establishing this project.
+
+The data dictionary is shown below:
 
 | **Attribute**              | **Description**                        |
 |----------------------------|----------------------------------------|
@@ -44,17 +45,10 @@ The dataset chosen is a simulated credit card fraud dataset from Kaggle. It cont
 | `first, last`              | Name of Credit Card Holder             |
 | `is_fraud`                 | Fraud Flag (Target Variable)           |
 
-This dataset provides an ideal setting for experimenting with data streaming, real-time fraud detection, and data processing.
-
 ## Used Tools
 The project leverages several key technologies:
 
-- **Python**: Used for data extraction, transformation, and scripting.
-- **Kafka**: Acts as a buffer, allowing streaming data to be processed in real-time. Producers push transaction data, and consumers read and process the messages.
-- **Spark**: Processes data from Kafka and transforms it into usable JSON for storage.
-- **MongoDB**: Stores the processed data, which is well-suited for storing JSON documents.
-- **Pydantic**: Used for data validation in the API layer, ensuring correct data types and formats.
-- **BI Tool**: For visualization, either Streamlit or PowerBI will be used to present analytical results.
+![Doc Stream Project - Document Stream Architecture](./images/Document_Stream_Architecture.jpg)
 
 ### Connect
 Python scripts are used to extract data from CSV, convert each row into JSON format, and send it to an API endpoint for further processing.
@@ -72,17 +66,13 @@ MongoDB is the chosen NoSQL database due to its ability to efficiently store JSO
 A BI tool like Streamlit or PowerBI will be used for visualizing the stored data, with a focus on detecting fraud patterns and summarizing transaction insights.
 
 ## Pipelines
-This project builds two main pipelines: one for real-time stream processing and another for batch processing.
+This project build a real-time stream processing pipeline.
+
+![Doc Stream Project - Document Stream Pipeline](./images/Document_Stream_Pipeline.jpg)
 
 ### Stream Processing
 - **Storing Data Stream**: Transaction data is streamed into Kafka topics, where each transaction is pushed in real-time.
 - **Processing Data Stream**: Spark consumes the Kafka data stream, processes it, and sends the transformed data to MongoDB.
-
-### Batch Processing
-Batch processing will also be implemented to process large chunks of data at scheduled intervals, complementing the real-time stream.
-
-### Visualizations
-Visualizations will be created to monitor transaction patterns and detect anomalies using a BI tool.
 
 ## Demo
 A demo video or presentation link will be provided to showcase the project.
@@ -90,8 +80,31 @@ A demo video or presentation link will be provided to showcase the project.
 ## Conclusion
 This project demonstrates the end-to-end process of document streaming and real-time data processing, from data extraction to storage and visualization. Key learnings include the effective use of Kafka for streaming, Spark for processing, and MongoDB for storing JSON data. The biggest challenge was handling unstandardized datetime formats and ensuring the correctness of real-time data flow.
 
+I also able to practice on version control - git throughout this project. Basically, I have divided each modification (adding or deletion of files) into diffrenet branches to ensure a vesion control is in place and not simply editing on main branch. The branches are:
+
+![Doc Stream Project - git branch](./images/git_branch_project1.png)
+
+- main
+  - as main repo. all final edition will be merge in this branch
+- remove_old_files
+  - remove unused or previous version of files. let say I created transformer(backup).py and transformer.py. I will preserver the latter only for final edition
+- modify_and_setup_rqrmnt
+  - this branch specifically edit any markdown, .yaml/.yml or any configuration or images file 
+- modify_main_script
+  - this one of the crucial branch where I edit the main .py, dockerfile script here
+
+Then finally, merge all branch cahnge into main branch as final edition:
+
+![Doc Stream Project - git branch](./images/git_branch_merged_project1.png)
+
+## Recommendation
+From my journey of exploring the tools locally, I noticed somre area of improvement I could have done to increase the project complexity, increase ingested data quality and governance in overall. I summarize my fruits for thoughts in image below:
+
+![Doc Stream Project - Document Stream Pipeline (Enhanced)](./images/Document_Stream_Pipeline_Enhanced.jpg)
+
 ## Follow Me On
-[LinkedIn](https://www.linkedin.com/in/faizpuad/)
+- [LinkedIn](https://www.linkedin.com/in/faizpuad/)
 
 ## Appendix
-[Kaggle Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection?select=fraudTrain.csv)
+- [Kaggle Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection?select=fraudTrain.csv)
+- [Inspiration & Refrence from Coach Andreas Kretz Academy](https://learndataengineering.com/)
