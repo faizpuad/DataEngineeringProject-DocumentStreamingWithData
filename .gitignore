@@ -359,7 +359,7 @@ output/*
 *.txt
 
 # Ignore .vscode
-.vscode
+*.vscode
 
 # Ignore jupyter checkpoint
 *.ipynb_checkpoints
