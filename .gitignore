@@ -363,4 +363,4 @@ output/*
 # Ignore jupyter checkpoint
 *.ipynb_checkpoints
 *.ipynb_checkpoints/
-code/ApacheSpark/.ipynb_checkpoints/
+code/ApacheSpark/.ipynb_checkpoints/*
