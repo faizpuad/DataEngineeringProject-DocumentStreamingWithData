@@ -1,0 +1,186 @@
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /:
+    get:
+      summary: Root
+      operationId: root__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /transaction:
+    post:
+      summary: Post Transaction
+      operationId: post_transaction_transaction_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditTrx'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Address:
+      properties:
+        street:
+          type: string
+          title: Street
+        city:
+          type: string
+          title: City
+        state:
+          type: string
+          title: State
+        zip:
+          type: integer
+          title: Zip
+        lat:
+          type: number
+          title: Lat
+        long:
+          type: number
+          title: Long
+      type: object
+      required:
+      - street
+      - city
+      - state
+      - zip
+      - lat
+      - long
+      title: Address
+    CardHolder:
+      properties:
+        first:
+          type: string
+          title: First
+        last:
+          type: string
+          title: Last
+        gender:
+          type: string
+          title: Gender
+        dob:
+          type: string
+          title: Dob
+      type: object
+      required:
+      - first
+      - last
+      - gender
+      - dob
+      title: CardHolder
+    CreditTrx:
+      properties:
+        trans_num:
+          type: string
+          title: Trans Num
+        trans_date_trans_time:
+          type: string
+          title: Trans Date Trans Time
+        cc_num:
+          type: integer
+          title: Cc Num
+        merchant:
+          type: string
+          title: Merchant
+        category:
+          type: string
+          title: Category
+        amt:
+          type: number
+          title: Amt
+        card_holder:
+          $ref: '#/components/schemas/CardHolder'
+        job:
+          type: string
+          title: Job
+        address:
+          $ref: '#/components/schemas/Address'
+        city_pop:
+          type: integer
+          title: City Pop
+        merch_location:
+          $ref: '#/components/schemas/MerchLocation'
+        unix_time:
+          type: integer
+          title: Unix Time
+        is_fraud:
+          type: integer
+          title: Is Fraud
+      type: object
+      required:
+      - trans_num
+      - trans_date_trans_time
+      - cc_num
+      - merchant
+      - category
+      - amt
+      - card_holder
+      - job
+      - address
+      - city_pop
+      - merch_location
+      - unix_time
+      - is_fraud
+      title: CreditTrx
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    MerchLocation:
+      properties:
+        lat:
+          type: number
+          title: Lat
+        long:
+          type: number
+          title: Long
+      type: object
+      required:
+      - lat
+      - long
+      title: MerchLocation
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
