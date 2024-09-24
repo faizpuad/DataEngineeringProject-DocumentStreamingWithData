@@ -1,1 +1,15 @@
+pip install kafka-python-ng
+
+pip install uvicorn[standard]
+
+Start (go to app folder): uvicorn main:app --reload
+
+fastapi2postman --app main.app --output doc_stream_postman.json
+
 docker build -t api-ingest .
+
+docker run --rm --network document-streaming_default --name my-api-ingest -p 80:80 api-ingest
+
+docker run --rm --name my-api-ingest -p 80:80 api-ingest
+
+docker run --rm --network docker_default --name my-api-ingest -p 80:80 api-ingest

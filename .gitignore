@@ -355,7 +355,13 @@ client/output.txt
 data/*
 output/*
 
-# Ignore .txt ipynb_checkpoints changes
+*.csv
 *.txt
+
+# Ignore .vscode
+.vscode
+
+# Ignore jupyter checkpoint
 *.ipynb_checkpoints
-*.ipynb_checkpoints/*
+*.ipynb_checkpoints/
+code/ApacheSpark/.ipynb_checkpoints/*
