@@ -354,3 +354,8 @@ client/output.txt
 # Ignore data source and output, and env(store creds, port etc)
 data/*
 output/*
+
+# Ignore .txt ipynb_checkpoints changes
+*.txt
+*.ipynb_checkpoints
+*.ipynb_checkpoints/*
