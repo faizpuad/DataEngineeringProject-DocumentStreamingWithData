@@ -354,3 +354,12 @@ client/output.txt
 # Ignore data source and output, and env(store creds, port etc)
 data/*
 output/*
+*.csv
+*.txt
+
+# Ignore .vscode
+.vscode
+
+# Ignore jupyter checkpoint
+*.ipynb_checkpoints
+*.ipynb_checkpoints/
