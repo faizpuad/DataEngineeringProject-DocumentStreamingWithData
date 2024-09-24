@@ -3,6 +3,10 @@ import json
 import requests
 import os
 from datetime import datetime
+import pandas as pd
+
+current_path = os.getcwd()
+print("Current Working Directory:", current_path)
 
 #set starting id and ending id
 with open('output/output.txt', 'r') as file:
@@ -18,42 +22,31 @@ while i <= end:
     
     # read a specific line
     line = linecache.getline('output/output.txt', i)
-    # print('line')
-    # print(line)
+
     # write the line to the API
     myjson = json.loads(line)
     
-    # print('')
-    # print('myjson')
-    print(myjson)
+    # print(myjson)
     try:
         # Fix 1: Remove trailing spaces
-        invoice_date_str = myjson['InvoiceDate'].strip()
+        trx_datetime = myjson['trans_date_trans_time'].strip()
+        dob_datetime = myjson['card_holder']['dob'].strip()
+        
+        # fix 2: Convert trx date into ISO supported dateformat
+        myjson['trans_date_trans_time'] = datetime.strptime(myjson['trans_date_trans_time'],'%Y-%m-%d %H:%M:%S').strftime("%-d/%-m/%Y %H:%M:%S")
+        print('Convert trx date successfull')
 
-        try:
-            # Fix 2: Try to convert string to datetime object with the first format
-            date = datetime.strptime(invoice_date_str, "%d/%m/%y %H:%M")
-        except ValueError:
-            # If the first format fails, try the second format
-            date = datetime.strptime(invoice_date_str, "%m/%d/%y %H:%M")
-
-        # Fix 3: Format the datetime object as a string in the desired format (without padding)
-        formatted_date = date.strftime("%-d/%-m/%Y %H:%M")
-
-        # Fix 4: Manually remove leading zeros (especially in %H)
-        formatted_date = formatted_date.replace('/0', '/').replace(' 0', ' ')
-
-        # Fix 5: Update the JSON data with the new date format
-        myjson['InvoiceDate'] = formatted_date
-        print(myjson['InvoiceDate'])  # Output: e.g., '12/1/2010 8:26'
+        myjson['card_holder']['dob'] = datetime.strptime(dob_datetime, '%Y-%m-%d').strftime("%-d/%-m/%Y")
+        print('Convert dob date successfull')
 
     except ValueError as e:
-        print(f"Date parsing failed for: {invoice_date_str} with error: {e}")
+        print(f"Date parsing failed for: {trx_datetime} with error: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
-    response = requests.post('http://localhost:80/invoiceitem', json=myjson)
-
+    print(myjson)
+    response = requests.post('http://localhost:80/transaction', json=myjson)
+    # print(type(myjson['card_holder']['dob']))
     # Use this for dedbugging
     # print("Status code: ", response.status_code)
     # print("Printing Entire Post Request")
@@ -61,6 +54,7 @@ while i <= end:
     # break
     # increase i
     i+=1
+    break
 
 ###Debug 
 
