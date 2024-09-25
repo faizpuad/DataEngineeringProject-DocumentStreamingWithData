@@ -8,7 +8,7 @@ The main objectives of the project are:
 - To implement real-time data streaming and batch processing, using tools such as Kafka for message buffering and Spark for data processing.
 - To discover possible drawback of this project's architecture that can be used as gap for my next data engineering project enhancement.
 
-In real world scenario, this project once established, helps data analyst, data scientists and other downstream users to utilized the processed data for analytical purposes, such as identifying fraudulent transactions thru machine learning or even make custom dashboards and reports.
+In real world scenario, this project pipeline is deployed, helps data analyst, data scientists and other downstream users to utilized the processed data for analytical purposes, such as identifying fraudulent transactions thru machine learning or even make custom dashboards and reports.
 
 ## Contents
 
@@ -30,7 +30,7 @@ In real world scenario, this project once established, helps data analyst, data 
 - [Appendix](#appendix)
 
 ## The Data Set
-The dataset chosen is a simulated credit card fraud dataset from Kaggle. It contains both legitimate and fraudulent transactions, and includes a wide range of attributes such as transaction time, merchant details, customer information, and fraud flags. I selected this dataset because of my familiarity with bank data as a data analyst and thus such convenience shoudl expedite my learning process for establishing this project.
+The dataset chosen is a simulated credit card fraud dataset from Kaggle. It contains both legitimate and fraudulent transactions, and includes a wide range of attributes such as transaction time, merchant details, customer information, and fraud flags. I selected this dataset because of my familiarity with bank data as a data analyst and thus such convenience should expedite my learning process for establishing this project.
 
 The data dictionary is shown below:
 
@@ -51,7 +51,7 @@ The project leverages several key technologies:
 ![Doc Stream Project - Document Stream Architecture](./images/Document_Stream_Architecture.jpg)
 
 ### Connect
-Python scripts are used to extract data from CSV, convert each row into JSON format, and send it to an API endpoint for further processing.
+Python scripts are used to extract data from CSV, convert each row into JSON format, and send it to an API endpoint for further processing. In here, data use from kaggle is the train data.
 
 ### Buffer
 Kafka is used to handle real-time streaming. A Kafka topic is set up, where the API acts as the producer, and Spark consumes the data for further processing.
@@ -60,7 +60,7 @@ Kafka is used to handle real-time streaming. A Kafka topic is set up, where the 
 Spark processes the raw data from Kafka, converting unstructured or single-line text into proper JSON objects. Data cleaning and transformations, such as standardizing date formats, are performed at this stage.
 
 ### Storage
-MongoDB is the chosen NoSQL database due to its ability to efficiently store JSON documents. Two collections are created: one for test data and one for training data.
+MongoDB is the chosen NoSQL database due to its ability to efficiently store JSON documents. One collection is created 'transactions' with document `creditcard` to store the credit card transaction data.
 
 ### Visualization
 A BI tool like Streamlit or PowerBI will be used for visualizing the stored data, with a focus on detecting fraud patterns and summarizing transaction insights.
@@ -78,27 +78,27 @@ This project build a real-time stream processing pipeline.
 A demo video or presentation link will be provided to showcase the project.
 
 ## Conclusion
-This project demonstrates the end-to-end process of document streaming and real-time data processing, from data extraction to storage and visualization. Key learnings include the effective use of Kafka for streaming, Spark for processing, and MongoDB for storing JSON data. The biggest challenge was handling unstandardized datetime formats and ensuring the correctness of real-time data flow.
+This project demonstrates the end-to-end process of document streaming and real-time data processing, from data extraction to storage and visualization. Key learnings include the effective use of Kafka for streaming, Spark for processing, and MongoDB for storing JSON data. The biggest challenge was handling unstandardized datetime formats, creating cleaner json format in pandas and spark, and ensuring the correctness of real-time data flow.
 
-I also able to practice on version control - git throughout this project. Basically, I have divided each modification (adding or deletion of files) into diffrenet branches to ensure a vesion control is in place and not simply editing on main branch. The branches are:
+I practiced version control using Git throughout this project. I created separate branches for different modifications to maintain version control and avoid directly editing the main branch. The branches are:
 
 ![Doc Stream Project - git branch](./images/git_branch_project1.png)
 
-- main
-  - as main repo. all final edition will be merge in this branch
-- remove_old_files
-  - remove unused or previous version of files. let say I created transformer(backup).py and transformer.py. I will preserver the latter only for final edition
-- modify_and_setup_rqrmnt
-  - this branch specifically edit any markdown, .yaml/.yml or any configuration or images file 
-- modify_main_script
-  - this one of the crucial branch where I edit the main .py, dockerfile script here
+- main: 
+  - The primary branch where all final editions are merged.
+- remove_old_files: 
+  - Used to remove unused or outdated files (e.g., preserving only transformer.py and removing transformer(backup).py).
+- modify_and_setup_rqrmnt: 
+  - Dedicated to editing markdown files, .yaml/.yml configurations, and image files.
+- modify_main_script: 
+  - A crucial branch for editing the main Python scripts and Dockerfile.
 
-Then finally, merge all branch cahnge into main branch as final edition:
+Finally, I merged all branch changes into the main branch as the final edition as shown below:
 
 ![Doc Stream Project - git branch](./images/git_branch_merged_project1.png)
 
 ## Recommendation
-From my journey of exploring the tools locally, I noticed somre area of improvement I could have done to increase the project complexity, increase ingested data quality and governance in overall. I summarize my fruits for thoughts in image below:
+During my journey of exploring the tools locally, I identified several areas for improvement that could have enhanced the project’s complexity, as well as improved data quality and governance overall. I’ve summarized my thoughts in the image below:
 
 ![Doc Stream Project - Document Stream Pipeline (Enhanced)](./images/Document_Stream_Pipeline_Enhanced.jpg)
 
