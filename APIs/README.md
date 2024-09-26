@@ -84,7 +84,7 @@ This option allows you to access the API from your local machine at `http://loca
 - The `fastapi2postman` tool is useful for generating Postman collections, which can be imported into Postman for API testing.
 - When running the Docker container, the `--rm` flag ensures that the container is removed after it stops, which is useful for development and testing.
 - The `-p 80:80` flag maps the container's port 80 to your host's port 80. Adjust this if you need to use a different port on your host machine.
- - run `code/client/get_api_docs.py` to obtain the documentation in yaml format.
+ - run `client/code/get_api_docs.py` to obtain the documentation in yaml format.
 
 For more information on FastAPI, Docker, or Kafka, refer to their respective official documentation:
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)

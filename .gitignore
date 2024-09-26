@@ -348,15 +348,13 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-client/data.csv
-client/output.txt
 
 # Ignore data source and output, and env(store creds, port etc)
-data/*
-output/*
+# data/*
+# output/
 
-*.csv
-*.txt
+# Ignore self note in txt
+*command.txt
 
 # Ignore .vscode
 *.vscode
