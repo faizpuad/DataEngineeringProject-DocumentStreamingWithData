@@ -78,6 +78,18 @@ services:
     depends_on:
       - mongo
 
+  client:
+    image: mlops-client
+    build:
+        context: ./Streamlit
+        dockerfile: Dockerfile
+    ports:
+    - 8501:8501
+    networks:
+      - document-streaming
+    depends_on:
+      - mongo
+
 networks:
   document-streaming:
     driver: bridge
