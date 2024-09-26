@@ -5,63 +5,77 @@ import pymongo
 
 # data = pd.read_csv("data.csv")
 myclient = pymongo.MongoClient(
-    "mongodb://localhost:27017/", username="root", password="example"
+    "mongodb://mongo:27017/", username="root", password="example"
 )
-mydb = myclient["docstreaming"]
-mycol = mydb["invoices"]
+mydb = myclient["transaction"]
+mycol = mydb["creditcard"]
 
 
-# Below the fist chart add a input field for the invoice number
-cust_id = st.sidebar.text_input("CustomerID:")
+# Below the fist chart add a input field for the credit card number
+cc_num = st.sidebar.text_input("Credit Card No: ")
 # st.text(inv_no)  # Use this to print out the content of the input field
 
 # if enter has been used on the input field
-if cust_id:
+if cc_num:
 
-    myquery = {"CustomerID": cust_id}
+    myquery = {"cc_num": cc_num}
     # only includes or excludes
-    mydoc = mycol.find(
-        myquery,
-        {
-            "_id": 0,
-            "StockCode": 0,
-            "Description": 0,
-            "Quantity": 0,
-            "Country": 0,
-            "UnitPrice": 0,
-        },
-    )
+    myquery = {"cc_num": cc_num}
+    mydoc = mycol.find(myquery)
 
     # create dataframe from resulting documents to use drop_duplicates
     df = DataFrame(mydoc)
 
-    # drop duplicates, but keep the first one
-    df.drop_duplicates(subset="InvoiceNo", keep="first", inplace=True)
+    # Drop duplicates based on 'trans_num' column
+    df.drop_duplicates(subset=['trans_num'], inplace=True)
+
+    # Optionally reset the index if needed
+    df.reset_index(drop=True, inplace=True)
 
     # Add the table with a headline
-    st.header("Output Customer Invoices")
+    st.header("Customer Transaction Detail")
     table2 = st.dataframe(data=df)
 
+    if 'merch_location' in df.columns:
+        df['latitude'] = df['merch_location'].apply(lambda x: x['lat'] if x else None)
+        df['longitude'] = df['merch_location'].apply(lambda x: x['long'] if x else None)
 
-# Below the fist chart add a input field for the invoice number
-inv_no = st.sidebar.text_input("InvoiceNo:")
-# st.text(inv_no)  # Use this to print out the content of the input field
+        # Filter only valid lat/long
+        df = df.dropna(subset=['latitude', 'longitude'])
 
-# if enter has been used on the input field
-if inv_no:
+        # Prepare DataFrame with 'latitude' and 'longitude' columns
+        map_df = df[['latitude', 'longitude']]
 
-    myquery = {"InvoiceNo": inv_no}
-    mydoc = mycol.find(
-        myquery,
-        {"_id": 0, "InvoiceDate": 0, "Country": 0, "CustomerID": 0},
-    )
+        # Display the map using Streamlit
+        if not map_df.empty:
+            st.header("Merchant Location")
+            st.map(map_df)
+        else:
+            st.write("No valid merch_location data for the given cc_num.")
 
-    # create the dataframe
-    df = DataFrame(mydoc)
+    else:
+        st.write("No merch_location data found for the given cc_num.")
 
-    # reindex it so that the columns are order lexicographically
-    reindexed = df.reindex(sorted(df.columns), axis=1)
 
-    # Add the table with a headline
-    st.header("Output by Invoice ID")
-    table2 = st.dataframe(data=reindexed)
+# # Below the fist chart add a input field for the invoice number
+# inv_no = st.sidebar.text_input("InvoiceNo:")
+# # st.text(inv_no)  # Use this to print out the content of the input field
+
+# # if enter has been used on the input field
+# if inv_no:
+
+#     myquery = {"InvoiceNo": inv_no}
+#     mydoc = mycol.find(
+#         myquery,
+#         {"_id": 0, "InvoiceDate": 0, "Country": 0, "CustomerID": 0},
+#     )
+
+#     # create the dataframe
+#     df = DataFrame(mydoc)
+
+#     # reindex it so that the columns are order lexicographically
+#     reindexed = df.reindex(sorted(df.columns), axis=1)
+
+#     # Add the table with a headline
+#     st.header("Output by Invoice ID")
+#     table2 = st.dataframe(data=reindexed)
