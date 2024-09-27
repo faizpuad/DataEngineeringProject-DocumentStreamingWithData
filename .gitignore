@@ -363,3 +363,8 @@ MigrationBackup/
 *.ipynb_checkpoints
 *.ipynb_checkpoints/
 code/ApacheSpark/.ipynb_checkpoints/*
+
+#ignore backup .py files
+*skeleton.py
+*streamlitapp_copy.py
+*markdown.py
