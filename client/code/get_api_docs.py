@@ -2,7 +2,7 @@ import requests
 import yaml
 
 # Fetch OpenAPI JSON
-response = requests.get("http://localhost:8000/openapi.json")
+response = requests.get("http://localhost:80/openapi.json")
 
 if response.status_code == 200:
     openapi_json = response.json()

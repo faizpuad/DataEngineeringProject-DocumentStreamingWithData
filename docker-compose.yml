@@ -37,15 +37,15 @@ services:
   #   networks:
   #     - document-streaming
 
-  # api-ingest:
-  #   image: 'api-ingest'
-  #   build:
-  #     context: ./APIs
-  #     dockerfile: dockerfile
-  #   ports:
-  #      - '80:80'
-  #   networks:
-  #     - document-streaming
+  api-ingest:
+    image: 'api-ingest'
+    build:
+      context: ./APIs
+      dockerfile: dockerfile
+    ports:
+       - '80:80'
+    networks:
+      - document-streaming
 
   mongo:
     container_name: mongo-dev

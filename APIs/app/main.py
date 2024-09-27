@@ -1,19 +1,21 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from datetime import datetime
 from kafka import KafkaProducer
 import json
+import pymongo
+from bson.json_util import dumps
 
-
+# use for /transaction
 class CardHolder(BaseModel):
     first: str
     last: str
     gender: str
     dob: str  # Assumes dob is in 'YYYY-MM-DD' format
 
-
+# use for /transaction
 class Address(BaseModel):
     street: str
     city: str
@@ -22,12 +24,12 @@ class Address(BaseModel):
     lat: float
     long: float
 
-
+# use for /transaction
 class MerchLocation(BaseModel):
     lat: float
     long: float
 
-
+# use for /transaction
 class CreditTrx(BaseModel):
     trans_num: str
     trans_date_trans_time: str  # Assumes format is 'YYYY-MM-DD HH:MM:SS'
@@ -43,6 +45,18 @@ class CreditTrx(BaseModel):
     unix_time: int
     is_fraud: int
 
+# use for /get_transactions
+# MongoDB client
+myclient = pymongo.MongoClient(
+    "mongodb://mongo:27017/", username="root", password="example"
+)
+mydb = myclient["transaction"]
+mycol = mydb["creditcard"]
+
+# use for /get_transactions
+# Define a request model (for structured input)
+class CreditCardQuery(BaseModel):
+    cc_num: str
 
 app = FastAPI()
 
@@ -89,6 +103,17 @@ async def post_transaction(
         print(f"Error: {e}")  # Log the error
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
+@app.post("/get_transactions")
+async def get_transactions(query: CreditCardQuery):
+    myquery = {"cc_num": query.cc_num}
+    mydoc = mycol.find(myquery)
+    
+    if not mydoc:
+        raise HTTPException(status_code=404, detail="No transactions found")
+    
+    # Convert MongoDB cursor to list and return as JSON
+    transactions = dumps(mydoc)
+    return {"transactions": transactions}
 
 def produce_kafka_string(json_as_string):
     producer = KafkaProducer(bootstrap_servers="kafka:9092", acks=1)
