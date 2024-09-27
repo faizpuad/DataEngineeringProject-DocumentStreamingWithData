@@ -57,9 +57,7 @@ for _, row in df.iterrows():
 # The default separators are ', ' for items and ': ' for key-value pairs.
 # By setting separators=(',', ':'), the output JSON string will have no spaces
 # after the commas and colons
-df["json"] = [
-    json.dumps(feature, separators=(",", ":")) for feature in features
-]
+df["json"] = [json.dumps(feature, separators=(",", ":")) for feature in features]
 
 # just take the json column of the dataframe
 dfjson = df["json"]

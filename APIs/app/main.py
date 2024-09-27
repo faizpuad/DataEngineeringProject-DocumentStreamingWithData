@@ -8,12 +8,14 @@ import json
 import pymongo
 from bson.json_util import dumps
 
+
 # use for /transaction
 class CardHolder(BaseModel):
     first: str
     last: str
     gender: str
     dob: str  # Assumes dob is in 'YYYY-MM-DD' format
+
 
 # use for /transaction
 class Address(BaseModel):
@@ -24,10 +26,12 @@ class Address(BaseModel):
     lat: float
     long: float
 
+
 # use for /transaction
 class MerchLocation(BaseModel):
     lat: float
     long: float
+
 
 # use for /transaction
 class CreditTrx(BaseModel):
@@ -45,6 +49,7 @@ class CreditTrx(BaseModel):
     unix_time: int
     is_fraud: int
 
+
 # use for /get_transactions
 # MongoDB client
 myclient = pymongo.MongoClient(
@@ -53,10 +58,12 @@ myclient = pymongo.MongoClient(
 mydb = myclient["transaction"]
 mycol = mydb["creditcard"]
 
+
 # use for /get_transactions
 # Define a request model (for structured input)
 class CreditCardQuery(BaseModel):
     cc_num: str
+
 
 app = FastAPI()
 
@@ -81,9 +88,9 @@ async def post_transaction(
         print("Parsed transaction timestamp: ", trx_date)
         item.trans_date_trans_time = trx_date
 
-        dob_date = datetime.strptime(
-            item.card_holder.dob, "%d/%m/%Y"
-        ).strftime("%Y-%m-%d")
+        dob_date = datetime.strptime(item.card_holder.dob, "%d/%m/%Y").strftime(
+            "%Y-%m-%d"
+        )
         print("Parsed date of birth: ", dob_date)
         item.card_holder.dob = dob_date
 
@@ -103,17 +110,19 @@ async def post_transaction(
         print(f"Error: {e}")  # Log the error
         return JSONResponse(content={"error": str(e)}, status_code=500)
 
+
 @app.post("/get_transactions")
 async def get_transactions(query: CreditCardQuery):
     myquery = {"cc_num": query.cc_num}
     mydoc = mycol.find(myquery)
-    
+
     if not mydoc:
         raise HTTPException(status_code=404, detail="No transactions found")
-    
+
     # Convert MongoDB cursor to list and return as JSON
     transactions = dumps(mydoc)
     return {"transactions": transactions}
+
 
 def produce_kafka_string(json_as_string):
     producer = KafkaProducer(bootstrap_servers="kafka:9092", acks=1)

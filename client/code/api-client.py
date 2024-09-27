@@ -48,9 +48,7 @@ while i <= end:
         print(f"An unexpected error occurred: {e}")
 
     print(myjson)
-    response = requests.post(
-        "http://localhost:80/transaction", json=myjson
-    )
+    response = requests.post("http://localhost:80/transaction", json=myjson)
     # print(type(myjson['card_holder']['dob']))
     # Use this for dedbugging
     # print("Status code: ", response.status_code)
