@@ -126,9 +126,9 @@ Streamlit web app is used for visualizing the stored data. I have implemented a 
 
 ![Transformed data in Client send to API](./images/Demo/sample_api_client_script.png)
 
-- Sample API Test in Postman. Using collections [README.md](./APIs-POSTMAN/doc_stream_postman.json)
+- Sample API Test in Postman. Using collections [doc_stream_postman.json](./APIs-POSTMAN/doc_stream_postman.json)
 
-![API Test Collection](./images/Demo/sample_postman_test1.png)
+![API Test Collection](./images/Demo/sample_postman_test1.png) 
 
 - Sample API Test in Postman with invalid datetime. Status 500
 
