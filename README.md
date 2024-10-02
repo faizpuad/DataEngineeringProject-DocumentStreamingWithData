@@ -109,7 +109,51 @@ MongoDB is the chosen NoSQL database due to its ability to efficiently store JSO
 Streamlit web app is used for visualizing the stored data. I have implemented a search filter for credit card number that will display transaction, customer and merchant information with map location of the merchant. It can actually expand for detecting fraud patterns and summarizing transaction insights. Refer [streamlitapp.py](./Streamlit/streamlitapp.py) for code implementation.
 
 ## 🎥 Demo
-A demo video or presentation link will be provided to showcase the project.
+> **Video of project demo**:
+
+[![Project Demo](https://img.youtube.com/vi/mMUVgZZyflg/0.jpg)](https://youtu.be/mMUVgZZyflg)
+
+> **Note 1**: I mistakenly said age restriction at 18 years old. It is actually 21 years old to able hold credit card.
+> **Note 2**: Instead of showing yaml file in fastapi, I think better to refer here [README.md](./APIs/README.md)
+
+### Screenshot / Excerpt of Project
+
+- Sample transformed CLient in Output file formatted
+
+![Sample transformed CLient in Output file formatted](./images/Demo/sample_output_formatted.png)
+
+- Transformed data in Client send to API
+
+![Transformed data in Client send to API](./images/Demo/sample_api_client_script.png)
+
+- Sample API Test in Postman. Using collections [README.md](./APIs-POSTMAN/doc_stream_postman.json)
+
+![API Test Collection](./images/Demo/sample_postman_test1.png)
+
+- Sample API Test in Postman with invalid datetime. Status 500
+
+![Invalid API Test](./images/Demo/sample_postman_test2.png)
+
+- Sample API Test in Postman with correct input. Status 201
+
+![Succesfull API Test](./images/Demo/sample_postman_test3.png)
+
+- MongoDB Collection `transaction` and Document `creditcard` creation
+
+![MongoDB Collection ](./images/Demo/sample_mongodb_data1.png)
+
+- Successful Data Store in MongoDB 
+
+![MonogDB data stored](./images/Demo/sample_mongodb_data2.png)
+
+- Streamlit web app initial state
+
+![Initial Streamlit app](./images/Demo/sample_streamlit_input1.png)
+
+- Streamlit web app with input data
+
+![Streamlit app with input data](./images/Demo/sample_streamlit_input2.png)
+
 
 ## 🚧 Project Challenges
 The biggest challenge was handling and transforming nested json schema. I also had trouble communicating with other services like changing localhost to service name. I encountered errors several times when trying to post data and had headaches understanding the HTTP 500 error codes. I realized detaching docker-composed run up is bad for troubleshooting. 
