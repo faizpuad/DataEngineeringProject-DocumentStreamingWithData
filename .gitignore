@@ -368,3 +368,6 @@ code/ApacheSpark/.ipynb_checkpoints/*
 *skeleton.py
 *streamlitapp_copy.py
 *markdown.py
+
+#ignore custom files
+*docker-compose-old.yml

@@ -8,10 +8,11 @@ current_path = os.getcwd()
 print("Current Working Directory:", current_path)
 
 # Load data
-data_loc = "data/fraudTrain.csv"
+data_loc = "./data/fraudTrain.csv"
 
 # load only 15 for testing
-df = pd.read_csv(data_loc).head(15)
+# df = pd.read_csv(data_loc).head(15)
+df = pd.read_csv(data_loc)
 print(df.head(2))
 
 # add a json column to the dataframe

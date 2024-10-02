@@ -96,8 +96,8 @@ cc_num = st.sidebar.text_input("Credit Card No: ")
 # If credit card number is entered
 if cc_num:
     # Make an API call to the FastAPI endpoint
-    # url = "http://api-ingest:80/get_transactions"  # Adjust URL if necessary
-    url = "http://localhost:80/get_transactions"  # Adjust URL if necessary
+    url = "http://api-ingest:80/get_transactions"  # Adjust URL if necessary
+    # url = "http://localhost:80/get_transactions"  # Adjust URL if necessary
     response = requests.post(url, json={"cc_num": cc_num})
 
     if response.status_code == 200:
