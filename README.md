@@ -75,7 +75,7 @@ Please find the process flow explanation for each process as below:
 ### Client
 In the local machine, the raw data is in csv format. Python is used here to transport the data (POST method) into another service for data cleaning, transformation. This transform service is an API built using FASTAPI framework. Before transferring the data, I make sure to perform Exploratory Data Analysis [EDA.ipynb](./client/code/EDA.ipynb) (as per CRISP-DM framework) to ensure I have better understanding of the data (i.e., datatype, useful columns etc). I also play around with possible json schema that I want to enforce in this project [api_client.ipynb](./client/code/api_client.ipynb). The finalized data transformation into ideal json format is in script [transformer.py](./client/code/transformer.py) where the script will convert tabular data into desired data as output file path. Once data is transformed, the json data will be POSTed to API on specific route `/transaction` as in [api-client.py](./client/code/api-client.py).Below is the json schema implemented on this project:
 
-![Json Schema](./images/Json_Schema_Proposed.jpg)
+![Json Schema](./images/Json_Schema_Proposedv2.png)
 
 > **Note**: Before continuing to scroll down this walkthrough, bear in mind that only the Client phase is done locally. The subsequent stages will be run in docker containers. To run multiple containers, docker-compose method is selected and network is set up to ensure each service/tool can communicate with each other in a dockerized environment. The composed file can be found here [docker-compose.yml](docker-compose.yml). It should be run first before implementing any of the tasks mentioned in this project.
 
