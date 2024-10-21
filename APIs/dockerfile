@@ -1,0 +1,8 @@
+FROM fastapi_image_version:pythonversion
+
+COPY requirements.txt /tmp/
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --requirement /tmp/requirements.txt
+
+COPY related_path

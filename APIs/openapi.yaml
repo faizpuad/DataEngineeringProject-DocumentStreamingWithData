@@ -1,0 +1,217 @@
+openapi: 3.0.2
+info:
+  title: APIs
+  version: 0.1.0
+paths:
+  /:
+    get:
+      summary: Root
+      operationId: root__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /transaction:
+    post:
+      summary: Post Transaction
+      operationId: post_transaction_transaction_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditTrx'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /get_transactions:
+    post:
+      summary: Get Transactions
+      operationId: get_transactions_get_transactions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditCardQuery'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Address:
+      title: Address
+      required:
+      - street
+      - city
+      - state
+      - zip
+      - lat
+      - long
+      type: object
+      properties:
+        street:
+          title: Street
+          type: string
+        city:
+          title: City
+          type: string
+        state:
+          title: State
+          type: string
+        zip:
+          title: Zip
+          type: integer
+        lat:
+          title: Lat
+          type: number
+        long:
+          title: Long
+          type: number
+    CardHolder:
+      title: CardHolder
+      required:
+      - first
+      - last
+      - gender
+      - dob
+      type: object
+      properties:
+        first:
+          title: First
+          type: string
+        last:
+          title: Last
+          type: string
+        gender:
+          title: Gender
+          type: string
+        dob:
+          title: Dob
+          type: string
+    CreditCardQuery:
+      title: CreditCardQuery
+      required:
+      - cc_num
+      type: object
+      properties:
+        cc_num:
+          title: Cc Num
+          type: string
+    CreditTrx:
+      title: CreditTrx
+      required:
+      - trans_num
+      - trans_date_trans_time
+      - cc_num
+      - merchant
+      - category
+      - amt
+      - card_holder
+      - job
+      - address
+      - city_pop
+      - merch_location
+      - unix_time
+      - is_fraud
+      type: object
+      properties:
+        trans_num:
+          title: Trans Num
+          type: string
+        trans_date_trans_time:
+          title: Trans Date Trans Time
+          type: string
+        cc_num:
+          title: Cc Num
+          type: integer
+        merchant:
+          title: Merchant
+          type: string
+        category:
+          title: Category
+          type: string
+        amt:
+          title: Amt
+          type: number
+        card_holder:
+          $ref: '#/components/schemas/CardHolder'
+        job:
+          title: Job
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        city_pop:
+          title: City Pop
+          type: integer
+        merch_location:
+          $ref: '#/components/schemas/MerchLocation'
+        unix_time:
+          title: Unix Time
+          type: integer
+        is_fraud:
+          title: Is Fraud
+          type: integer
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    MerchLocation:
+      title: MerchLocation
+      required:
+      - lat
+      - long
+      type: object
+      properties:
+        lat:
+          title: Lat
+          type: number
+        long:
+          title: Long
+          type: number
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string

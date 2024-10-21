@@ -1,0 +1,41 @@
+version: "x" 
+# below serve as few components setup example to establish this project
+services:
+
+  zookeeper:
+    image: 'dummy/zookeeper:latest'
+    ports:
+      - 'xx:xx'  # change to your prefer port
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - document-streaming
+
+  spark:
+    image: 'dummy/pyspark-notebook:latest'
+    ports:
+      - 'xx:xx'
+      - "xx-xx:xx-xx"
+    volumes:
+      - ./path/:/path/  # Change to fill_your_volume_path_here
+    networks:
+      - document-streaming
+
+  mongo:
+    container_name: mongo-dev
+    image: 'dummy/mongo:latest'
+    volumes:
+      - ./path/:/path/  # Change to fill_your_volume_path_here
+    restart: on-failure
+    ports:
+      - "xx:xx"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fill_your_username_here
+      MONGO_INITDB_ROOT_PASSWORD: fill_your_password_here
+      MONGO_INITDB_DATABASE: auth
+    networks:
+      - document-streaming
+
+networks:
+  document-streaming:
+    driver: bridge

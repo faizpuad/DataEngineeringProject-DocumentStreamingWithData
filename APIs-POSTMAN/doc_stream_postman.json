@@ -1,0 +1,66 @@
+{
+  "info": {
+      "name": "Document Stream Project",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+      {
+          "name": "root",
+          "request": {
+              "url": "http://localhost:xx/",
+              "method": "GET"
+          }
+      },
+      {
+          "name": "post_transaction",
+          "request": {
+              "url": "http://localhost:xx/transaction",
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\"trans_num\": \"0b242abb623afc578575680df30655b9\", \"trans_date_trans_time\": \"1/1/2019 00:00:18\", \"cc_num\": 2703186189652095, \"merchant\": \"fraud_Rippin, Kub and Mann\", \"category\": \"misc_net\", \"amt\": 4.97, \"card_holder\": {\"first\": \"Jennifer\", \"last\": \"Banks\", \"gender\": \"F\", \"dob\": \"9/3/1988\"}, \"job\": \"Psychologist, counselling\", \"address\": {\"street\": \"561 Perry Cove\", \"city\": \"Moravian Falls\", \"state\": \"NC\", \"zip\": 28654, \"lat\": 36.0788, \"long\": -81.1781}, \"city_pop\": 3495, \"merch_location\": {\"lat\": 36.011293, \"long\": -82.048315}, \"unix_time\": 1325376018, \"is_fraud\": 0}"
+              }
+          }
+      },
+      {
+          "name": "post_transaction_invalid_datetime",
+          "request": {
+              "url": "http://localhost:xx/transaction",
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\"trans_num\": \"0b242abb623afc578575680df30655b9\", \"trans_date_trans_time\": \"01-01-2019 00:00:18\", \"cc_num\": 2703186189652095, \"merchant\": \"fraud_Rippin, Kub and Mann\", \"category\": \"misc_net\", \"amt\": 4.97, \"card_holder\": {\"first\": \"Jennifer\", \"last\": \"Banks\", \"gender\": \"F\", \"dob\": \"1988/9/3\"}, \"job\": \"Psychologist, counselling\", \"address\": {\"street\": \"561 Perry Cove\", \"city\": \"Moravian Falls\", \"state\": \"NC\", \"zip\": 28654, \"lat\": 36.0788, \"long\": -81.1781}, \"city_pop\": 3495, \"merch_location\": {\"lat\": 36.011293, \"long\": -82.048315}, \"unix_time\": 1325376018, \"is_fraud\": 0}"
+              }
+          }
+      },
+      {
+          "name": "get_transactions",
+          "request": {
+              "url": "http://localhost:xx/get_transactions",
+              "method": "POST",
+              "header": [
+                  {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                  }
+              ],
+              "body": {
+                  "mode": "raw",
+                  "raw": "{\"cc_num\": \"2703186189652095\"}"
+              }
+          }
+      }
+  ]
+}

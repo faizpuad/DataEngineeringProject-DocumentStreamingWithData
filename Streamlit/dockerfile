@@ -1,0 +1,10 @@
+FROM python:fill_your_python_version_here-slim
+
+COPY requirements.txt /app/requirements.txt
+
+WORKDIR /app
+RUN pip install -r requirements.txt
+
+COPY fill_your_app_file_here.py fill_your_app_file_here.py
+
+CMD ["streamlit", "run", "fill_your_app_file_here.py"]
