@@ -1,0 +1,2 @@
+# DataEngineeringProject-DocumentStreamingWithData
+The core objective of this project is to build an end-to-end data streaming pipeline that processes this dataset in real-time. By leveraging modern data engineering tools and techniques, we aim to connect, buffer, process, store, and visualize streaming data. This allows for better understanding of data flows, handling of large-scale real-time data
